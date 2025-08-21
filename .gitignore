@@ -1,0 +1,15 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment
+.venv/
+.env
+
+# Migrations (keep first version file, ignore others)
+migrations/versions/*
+!migrations/versions/02ea614e0c21_initial.py
+
+# OS/editor junk
+.DS_Store
+Thumbs.db

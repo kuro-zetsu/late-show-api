@@ -26,6 +26,39 @@ A lightweight and intuitive **Flask API** that allows management of episodes, gu
 
 ---
 
+### Project Structure
+
+```
+    lateshow-reagan-nyauma/
+    ├── app.py                # Application entry point
+    ├── seed.py               # Script to populate initial data
+    ├── Pipfile               # Pipenv dependency definitions
+    ├── Pipfile.lock          # Locked dependencies
+    ├── README.md             # Project documentation
+    ├── .env                  # Environment variables (not tracked in git)
+    ├── .gitignore            # Git ignore rules
+    ├── instance/
+    │   └── lateshow.db       # SQLite database (kept for marking)
+    ├── migrations/           # Database migrations
+    │   ├── env.py
+    │   ├── README
+    │   ├── alembic.ini
+    │   ├── script.py.mako
+    │   └── versions/
+    │       └── 02ea614e0c21_initial.py   # Initial migration (kept)
+    ├── models/               # Database models
+    │   ├── __init__.py
+    │   ├── appearance.py
+    │   ├── episode.py
+    │   └── guest.py
+    └── routes/               # API routes
+    ├── __init__.py
+    ├── appearance_routes.py
+    ├── episode_routes.py
+    └── guest_routes.py
+```
+--- 
+
 ### Setup Instructions
 
 1.  **Clone the repository**
