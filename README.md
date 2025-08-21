@@ -72,13 +72,26 @@ A lightweight and intuitive **Flask API** that allows management of episodes, gu
     pipenv shell
     ```
 3.  **Configure environment variables**
-    Create a `.env` file in the project root with the following contents:
+    An `.env.example` file is provided with the required variables.  
+    Copy it to create your own `.env` file and update the values as needed:
+
+    ```bash
+    cp .env.example .env
     ```
+    Then open .env and replace placeholder values (e.g., enter-secret-key-here) with your own.
+    ```
+    # Database configuration
     SQLALCHEMY_DATABASE_URI=sqlite:///lateshow.db
-    SECRET_KEY=your_secret_key_here
+
+    # Flask configuration
     FLASK_APP=app.py
     FLASK_RUN_PORT=5555
+    SECRET_KEY=your-secret-key-here         #Replace this with a secure key
+
+    # SQLAlchemy settings
     SQLALCHEMY_TRACK_MODIFICATIONS=False
+
+    # JSON settings
     JSON_SORT_KEYS=False
     ```
 4.  **Initialize the database and perform initial migration**
