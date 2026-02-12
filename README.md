@@ -150,3 +150,7 @@ app.py      → Application entry point
 - Automated test coverage
 
 - API documentation (Swagger / OpenAPI)
+
+## License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
