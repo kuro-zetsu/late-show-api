@@ -1,17 +1,42 @@
 # Late Show API
 
-A lightweight and intuitive **Flask API** that allows management of episodes, guests, and ratings for a fictional late-night talk show. It provides endpoints to create, read, update, and delete entries while enforcing validation rules such as correct date formats and preventing future-dated episodes. **SQLite** is used as the database backend, and **SQLAlchemy ORM** ensures smooth database interactions.
+**Late Show API** is a RESTful backend service built with **Flask and SQLAlchemy** that models a simplified production system for a late-night talk show. The API manages **episodes, guests, and appearances,** demonstrating relational data modeling, input validation, and clean REST design.
+
+>This project was built as a backend engineering exercise focused on API design, relational database modeling, and production-style development workflows.
 
 ---
 
-### Features
+### Core Capabilities
 
-* Manage episodes including their dates and identifiers.
-* Manage guests and track their appearances.
-* Record and access ratings for episodes.
-* Enforces input validation for dates (`dd/mm/yyyy`) and prevents future dates.
-* **SQLite** database integration via **SQLAlchemy**.
-* Database migrations handled with **Flask-Migrate**.
+- RESTful CRUD operations for:
+
+    - Episodes
+
+    - Guests
+
+    - Appearances
+
+- Relational data modeling using SQLAlchemy ORM
+
+- Input validation and error handling
+
+- Database migrations using Flask-Migrate
+
+- Clean modular architecture for scalability
+
+---
+
+### Technical Highlights
+
+- Designed relational models with one-to-many and many-to-many relationships
+
+- Implemented schema validation and domain constraints (date formats, future date prevention)
+
+- Structured routes using modular blueprints
+
+- Applied database migration workflows for safe schema evolution
+
+- Built clear separation between routing, models, and application setup
 
 ---
 
@@ -26,40 +51,46 @@ A lightweight and intuitive **Flask API** that allows management of episodes, gu
 
 ---
 
-### Project Structure
+### Architecture Overview
 
 ```
-    lateshow-reagan-nyauma/
-    ├── app.py                # Application entry point
-    ├── seed.py               # Script to populate initial data
-    ├── Pipfile               # Pipenv dependency definitions
-    ├── Pipfile.lock          # Locked dependencies
-    ├── README.md             # Project documentation
-    ├── .env                  # Environment variables (not tracked in git)
-    ├── .gitignore            # Git ignore rules
-    ├── instance/
-    │   └── lateshow.db       # SQLite database (kept for marking)
-    ├── migrations/           # Database migrations
-    │   ├── env.py
-    │   ├── README
-    │   ├── alembic.ini
-    │   ├── script.py.mako
-    │   └── versions/
-    │       └── 02ea614e0c21_initial.py   # Initial migration (kept)
-    ├── models/               # Database models
-    │   ├── __init__.py
-    │   ├── appearance.py
-    │   ├── episode.py
-    │   └── guest.py
-    └── routes/               # API routes
-    ├── __init__.py
-    ├── appearance_routes.py
-    ├── episode_routes.py
-    └── guest_routes.py
+models/     → Database models & relationships
+routes/     → Modular REST API endpoints
+migrations/ → Database schema versioning
+app.py      → Application entry point
+
 ```
 --- 
 
-### Setup Instructions
+### API Endpoints
+
+#### Episodes
+
+* `GET /episodes/` - Retrieve all episodes
+* `GET /episodes/<episode_id>` - Retrieve a specific episode
+* `POST /episodes/` - Create a new episode
+* `PATCH /episodes/<episode_id>` - Update an episode
+* `DELETE /episodes/<episode_id>` - Delete an episode
+
+#### Guests
+
+* `GET /guests/` - Retrieve all guests
+* `GET /guests/<guest_id>` - Retrieve a specific guest
+* `POST /guests/` - Create a new guest
+* `PATCH /guests/<guest_id>` - Update a guest
+* `DELETE /guests/<guest_id>` - Delete a guest
+
+#### Appearances
+
+* `GET /appearances/` - Retrieve all appearances
+* `GET /appearances/<appearance_id>` - Retrieve a specific appearance
+* `POST /appearances/` - Create a new appearance
+* `PATCH /appearances/<appearance_id>` - Update an appearance
+* `DELETE /appearances/<appearance_id>` - Delete an appearance
+
+---
+
+### Setup
 
 1.  **Clone the repository**
     ```bash
@@ -108,36 +139,14 @@ A lightweight and intuitive **Flask API** that allows management of episodes, gu
 
 ---
 
-### API Endpoints
+### Possible Improvements
 
-#### Episodes
+- Authentication & role-based authorization
 
-* `GET /episodes/` - Retrieve all episodes
-* `GET /episodes/<episode_id>` - Retrieve a specific episode
-* `POST /episodes/` - Create a new episode
-* `PATCH /episodes/<episode_id>` - Update an episode
-* `DELETE /episodes/<episode_id>` - Delete an episode
+- Pagination & filtering
 
-#### Guests
+- PostgreSQL production deployment
 
-* `GET /guests/` - Retrieve all guests
-* `GET /guests/<guest_id>` - Retrieve a specific guest
-* `POST /guests/` - Create a new guest
-* `PATCH /guests/<guest_id>` - Update a guest
-* `DELETE /guests/<guest_id>` - Delete a guest
+- Automated test coverage
 
-#### Appearances
-
-* `GET /appearances/` - Retrieve all appearances
-* `GET /appearances/<appearance_id>` - Retrieve a specific appearance
-* `POST /appearances/` - Create a new appearance
-* `PATCH /appearances/<appearance_id>` - Update an appearance
-* `DELETE /appearances/<appearance_id>` - Delete an appearance
-
----
-
-### Notes
-
-* All dates must be in `dd/mm/yyyy` format.
-* Future dates are not accepted.
-* JSON responses preserve the key order as defined in models.
+- API documentation (Swagger / OpenAPI)
